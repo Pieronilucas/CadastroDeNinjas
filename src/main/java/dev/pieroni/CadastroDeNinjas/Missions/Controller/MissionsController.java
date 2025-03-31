@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class MissionsController {
 
-    @GetMapping("/welcome2")
-    public String welcome2() {return "Welcome to missions controller";}
+    @GetMapping("/missionsset")
+    public String missionsset() {return "Welcome to missions controller";}
 
 }
