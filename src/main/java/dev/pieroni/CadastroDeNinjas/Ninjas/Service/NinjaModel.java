@@ -1,9 +1,12 @@
-package dev.pieroni.CadastroDeNinjas;
+package dev.pieroni.CadastroDeNinjas.Ninjas.Service;
 
+import dev.pieroni.CadastroDeNinjas.Missions.Service.MissionsModel;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_registration")
 public class NinjaModel {
 
     @Id
@@ -12,6 +15,9 @@ public class NinjaModel {
     private String name;
     private String email;
     private int age;
+    @ManyToOne
+    @JoinColumn(name = "missions_id")
+    private MissionsModel missions;
 
     public NinjaModel() {
     }
@@ -21,6 +27,7 @@ public class NinjaModel {
         this.email = email;
         this.age = age;
     }
+
 
     public String getName() {
         return name;
