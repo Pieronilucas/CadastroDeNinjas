@@ -22,6 +22,7 @@ public class MissionsModel {
     private Long id;
     private String name;
     private String difficulty;
+
     @OneToMany(mappedBy = "missions")
     private List<NinjaModel> ninja;
 

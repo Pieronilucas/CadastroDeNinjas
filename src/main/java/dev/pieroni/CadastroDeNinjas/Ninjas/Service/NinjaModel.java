@@ -18,10 +18,17 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @Column(unique = true)
     private String email;
+
+    @Column(name = "img_url")
+    private String imgUrl;
+
     private int age;
+
     @ManyToOne
     @JoinColumn(name = "missions_id")
     private MissionsModel missions;
