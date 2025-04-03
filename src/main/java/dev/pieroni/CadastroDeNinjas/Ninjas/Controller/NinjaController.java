@@ -1,8 +1,6 @@
 package dev.pieroni.CadastroDeNinjas.Ninjas.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
@@ -12,5 +10,40 @@ public class NinjaController {
     public String welcome() {
         return "Welcome to Cadastro de Ninjas";
     }
+
+    // Create Ninja
+    @PostMapping("/create")
+    public String createNinja(){
+        return "Ninja created";
+    }
+
+
+    // Search by ID
+    @GetMapping("/searchID")
+    public String searchID(){
+        return "Search ID";
+    }
+
+
+    // Read Ninja data
+    @GetMapping("/showall")
+    public String showAll(){
+        return "Show all";
+    }
+
+
+    // Update Ninja data
+     @PutMapping("/update")
+     public String updateNinja(){
+        return "Ninja updated";
+     }
+
+
+    // Delete Ninja
+    @DeleteMapping("/deleteID")
+    public String deleteID(){
+        return "Delete ID";
+    }
+
 
 }
