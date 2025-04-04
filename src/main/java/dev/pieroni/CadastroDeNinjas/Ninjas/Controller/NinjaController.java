@@ -3,13 +3,9 @@ package dev.pieroni.CadastroDeNinjas.Ninjas.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninjas")
 public class NinjaController {
 
-    @GetMapping("/welcome")
-    public String welcome() {
-        return "Welcome to Cadastro de Ninjas";
-    }
 
     // Create Ninja
     @PostMapping("/create")

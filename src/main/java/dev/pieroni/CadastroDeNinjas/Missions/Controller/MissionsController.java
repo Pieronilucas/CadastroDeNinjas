@@ -3,42 +3,39 @@ package dev.pieroni.CadastroDeNinjas.Missions.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/mission")
 public class MissionsController {
 
-    @GetMapping("/missionsset")
-    public String missionsset() {return "Welcome to missions controller";}
-
     // Create missions
-    @PostMapping("/createmission")
+    @PostMapping("/create")
     public String createMission(){
         return "Mission created";
     }
 
     // Search by ID
-    @GetMapping("/searchmissionsID")
-    public String searchmissionsID(){
+    @GetMapping("/searchID")
+    public String searchMissionID(){
         return "Welcome to search missions controller";
     }
 
 
     // Read Ninja data
-    @GetMapping("/showallmissions")
-    public String showallmissions(){
+    @GetMapping("/showall")
+    public String showAllMissions(){
         return "Welcome to show missions controller";
     }
 
 
     // Update Ninja data
-    @PutMapping("/updatemission")
-    public String updatemission(){
+    @PutMapping("/update")
+    public String updateMission(){
         return "Mission updated";
     }
 
 
     // Delete Ninja
-    @DeleteMapping("/deletemissionsID")
-    public String deletemissionsID(){
+    @DeleteMapping("/deleteID")
+    public String deleteID(){
         return "Mission deleted";
     }
 
