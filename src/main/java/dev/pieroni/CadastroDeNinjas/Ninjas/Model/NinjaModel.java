@@ -1,6 +1,6 @@
-package dev.pieroni.CadastroDeNinjas.Ninjas.Service;
+package dev.pieroni.CadastroDeNinjas.Ninjas.Model;
 
-import dev.pieroni.CadastroDeNinjas.Missions.Service.MissionsModel;
+import dev.pieroni.CadastroDeNinjas.Missions.Model.MissionsModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
