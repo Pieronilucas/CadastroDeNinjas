@@ -1,6 +1,7 @@
 package dev.pieroni.CadastroDeNinjas.Missions.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class MissionsModel {
     private String difficulty;
 
     @OneToMany(mappedBy = "missions")
+    @JsonIgnore
     private List<NinjaModel> ninja;
 
 
