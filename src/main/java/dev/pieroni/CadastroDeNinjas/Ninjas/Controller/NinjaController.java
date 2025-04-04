@@ -1,11 +1,22 @@
 package dev.pieroni.CadastroDeNinjas.Ninjas.Controller;
 
+import dev.pieroni.CadastroDeNinjas.Ninjas.Model.NinjaModel;
+import dev.pieroni.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
+import dev.pieroni.CadastroDeNinjas.Ninjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
 
+
+    private final NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     // Create Ninja
     @PostMapping("/create")
@@ -23,8 +34,8 @@ public class NinjaController {
 
     // Read Ninja data
     @GetMapping("/showall")
-    public String showAll(){
-        return "Show all";
+    public List<NinjaModel> showAll(){
+        return ninjaService.findAll();
     }
 
 
