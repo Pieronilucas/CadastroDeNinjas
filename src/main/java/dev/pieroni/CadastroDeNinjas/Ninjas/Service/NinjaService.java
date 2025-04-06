@@ -17,20 +17,21 @@ public class NinjaService {
     }
 
     // Show all ninjas
-    public List<NinjaModel> findAll(){
+    public List<NinjaModel> findAll() {
         return ninjaRepository.findAll();
     }
 
 
     // Show ninja by ID
-    public NinjaModel findById(Long id){
+    public NinjaModel findById(Long id) {
         Optional<NinjaModel> ninjaById = ninjaRepository.findById(id);
         return ninjaById.orElse(null);
     }
 
-
-
-
+    // Create a ninja
+    public NinjaModel createNinja(NinjaModel ninja) {
+        return ninjaRepository.save(ninja);
+    }
 
 
 }

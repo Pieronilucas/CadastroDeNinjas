@@ -20,35 +20,35 @@ public class NinjaController {
 
     // Create Ninja
     @PostMapping("/create")
-    public String createNinja(){
-        return "Ninja created";
+    public NinjaModel createNinja(@RequestBody NinjaModel ninja) {
+        return ninjaService.createNinja(ninja);
     }
 
 
     // Search by ID
     @GetMapping("/searchID/{id}")
-    public NinjaModel searchById(@PathVariable Long id){
+    public NinjaModel searchById(@PathVariable Long id) {
         return ninjaService.findById(id);
     }
 
 
     // Read Ninja data
     @GetMapping("/showall")
-    public List<NinjaModel> showAll(){
+    public List<NinjaModel> showAll() {
         return ninjaService.findAll();
     }
 
 
     // Update Ninja data
-     @PutMapping("/update")
-     public String updateNinja(){
+    @PutMapping("/update")
+    public String updateNinja() {
         return "Ninja updated";
-     }
+    }
 
 
     // Delete Ninja
     @DeleteMapping("/deleteID")
-    public String deleteID(){
+    public String deleteID() {
         return "Delete ID";
     }
 
