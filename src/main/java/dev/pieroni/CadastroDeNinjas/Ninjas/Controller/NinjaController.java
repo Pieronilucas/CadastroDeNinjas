@@ -26,9 +26,9 @@ public class NinjaController {
 
 
     // Search by ID
-    @GetMapping("/searchID")
-    public String searchID(){
-        return "Search ID";
+    @GetMapping("/searchID/{id}")
+    public NinjaModel searchById(@PathVariable Long id){
+        return ninjaService.findById(id);
     }
 
 
