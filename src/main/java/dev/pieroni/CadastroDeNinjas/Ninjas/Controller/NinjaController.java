@@ -1,7 +1,6 @@
 package dev.pieroni.CadastroDeNinjas.Ninjas.Controller;
 
 import dev.pieroni.CadastroDeNinjas.Ninjas.Model.NinjaModel;
-import dev.pieroni.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,9 +39,9 @@ public class NinjaController {
 
 
     // Update Ninja data
-    @PutMapping("/update")
-    public String updateNinja() {
-        return "Ninja updated";
+    @PutMapping("/update/{id}")
+    public NinjaModel updateNinja(@PathVariable Long id, @RequestBody NinjaModel ninjaUpdate) {
+        return ninjaService.updateNinja(id, ninjaUpdate);
     }
 
 
