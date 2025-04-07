@@ -1,5 +1,7 @@
 package dev.pieroni.CadastroDeNinjas.Ninjas.Service;
 
+import dev.pieroni.CadastroDeNinjas.Ninjas.DTO.NinjaDTO;
+import dev.pieroni.CadastroDeNinjas.Ninjas.Mapper.NinjaMapper;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Model.NinjaModel;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // Show all ninjas
@@ -29,8 +33,10 @@ public class NinjaService {
     }
 
     // Create a ninja
-    public NinjaModel createNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO createNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaModel = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaModel);
     }
 
     // Delete ninja by ID
