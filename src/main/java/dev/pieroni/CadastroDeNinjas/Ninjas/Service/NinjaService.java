@@ -33,5 +33,11 @@ public class NinjaService {
         return ninjaRepository.save(ninja);
     }
 
+    // Delete ninja by ID
+    public void deleteNinja(Long id) {
+        ninjaRepository.deleteById(id);
+    }
+
+
 
 }
