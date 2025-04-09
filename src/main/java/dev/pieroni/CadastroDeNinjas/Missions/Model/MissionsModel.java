@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
+@ToString(exclude = "ninja")
 public class MissionsModel {
 
     @Id

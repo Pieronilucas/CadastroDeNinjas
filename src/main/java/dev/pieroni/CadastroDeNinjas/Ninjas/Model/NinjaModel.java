@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
+@ToString(exclude = "missions")
 public class NinjaModel {
 
     @Id
