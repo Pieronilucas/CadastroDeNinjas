@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/mission")
 public class MissionsController {
-    private MissionsService missionsService;
+    private final MissionsService missionsService;
 
     public MissionsController(MissionsService missionsService) {
         this.missionsService = missionsService;
