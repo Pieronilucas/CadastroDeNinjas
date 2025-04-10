@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Ninjas Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .btn-add {
+            background-color: #5e1111;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #5e1111;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-mission {
+            color: #a94442;
+            font-style: italic;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #5e1111;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #5e1111;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ninjas list</h1>
+<a class="btn-add" th:href="@{/ninjas/ui/add}">Add New Ninja</a>
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Rank</th>
+            <th>Mission</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr th:each ="ninja: ${ninjas}">
+
+            <td> <img th:src="${ninja.imgUrl}" width="150" height="150"></td>
+            <td th:text="${ninja.id}"></td>
+            <td th:text="${ninja.name}"></td>
+            <td th:text="${ninja.age}"></td>
+            <td th:text="${ninja.email}"></td>
+            <td th:text="${ninja.rank}"></td>
+            <td>
+                <span th:if="${ninja.missions}"><span th:text="${ninja.missions.name}"></span> Difficulty: <span th:text="${ninja.missions.difficulty}"></span></span>
+                <span th:if="${ninja.missions == null}" class="no-mission">Ninja has no missions</span>
+            </td>
+            <td>
+                <a th:href="@{/ninjas/ui/searchID/{id}(id=${ninja.id})}">Details</a>
+                <a th:href="@{/ninjas/ui/delete/{id}(id=${ninja.id})}">Delete</a>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

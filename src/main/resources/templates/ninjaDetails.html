@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Ninja Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .ninja-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        img {
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #5e1111;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5e1111;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444;
+            margin: 6px 0;
+        }
+
+        strong {
+            color: #222;
+        }
+
+        h3 {
+            margin-top: 30px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #5e1111;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .no-mission {
+            color: #a94442;
+            font-style: italic;
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px auto 0;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #5e1111;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #801616;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ninja</h1>
+
+<div class="ninja-card">
+    <img th:src="${ninjas.imgUrl}" alt="${ninjas.name}" />
+    <h2 th:text="${ninjas.name}">Ninja Name</h2>
+
+    <p><strong>Email:</strong> <span th:text="${ninjas.email}">Email</span></p>
+    <p><strong>Age:</strong> <span th:text="${ninjas.age}">Age</span></p>
+    <p><strong>Rank:</strong> <span th:text="${ninjas.rank}">Rank</span></p>
+
+    <h3>Mission</h3>
+    <table th:if="${ninjas.missions != null}">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Difficulty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${ninjas.missions.name}">Mission Name</td>
+            <td th:text="${ninjas.missions.difficulty}">Difficulty</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="no-mission" th:if="${ninjas.missions == null}">This ninja has no assigned mission.</p>
+</div>
+
+<div style="text-align: center;">
+    <a href="/ninjas/ui/showall">Show All</a>
+</div>
+
+</body>
+</html>

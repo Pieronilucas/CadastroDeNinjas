@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Missions Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: #fff;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #5e1111;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    span {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .no-ninja {
+      color: #a94442;
+      font-style: italic;
+    }
+
+    .btn, a {
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 4px;
+      text-decoration: none;
+      border-radius: 5px;
+      color: white;
+      background-color: #5e1111;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover, a:hover {
+      background-color: #3b0c0c;
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+    }
+
+    .btn-delete:hover {
+      background-color: #d32f2f;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Missions list</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Difficulty</th>
+      <th>Ninja</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mission : ${missions}">
+      <td th:text="${mission.id}"></td>
+      <td th:text="${mission.name}"></td>
+      <td th:text="${mission.difficulty}"></td>
+      <td>
+          <span th:if="${mission.ninja != null}" th:each="ninja : ${mission.ninja}">
+            <span th:text="${ninja.name}"></span>
+            <span>Rank: <span th:text="${ninja.rank}"></span></span>
+          </span>
+        <span th:if="${mission.ninja == null}" class="no-ninja">There's no ninja in this mission yet</span>
+      </td>
+      <td>
+        <a class="btn-delete" th:href="@{/mission/ui/delete/{id}(id=${mission.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,9 @@
 package dev.pieroni.CadastroDeNinjas.Ninjas.Service;
 
+import dev.pieroni.CadastroDeNinjas.Missions.DTO.MissionsDTO;
+import dev.pieroni.CadastroDeNinjas.Missions.Mapper.MissionsMapper;
+import dev.pieroni.CadastroDeNinjas.Missions.Model.MissionsModel;
+import dev.pieroni.CadastroDeNinjas.Missions.Repository.MissionsRepository;
 import dev.pieroni.CadastroDeNinjas.Ninjas.DTO.NinjaDTO;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Mapper.NinjaMapper;
 import dev.pieroni.CadastroDeNinjas.Ninjas.Model.NinjaModel;
@@ -15,10 +19,14 @@ public class NinjaService {
 
     private final NinjaRepository ninjaRepository;
     private final NinjaMapper ninjaMapper;
+    private final MissionsRepository missionsRepository;
+    private final MissionsMapper missionsMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper, MissionsRepository missionsRepository, MissionsMapper missionsMapper) {
         this.ninjaRepository = ninjaRepository;
         this.ninjaMapper = ninjaMapper;
+        this.missionsRepository = missionsRepository;
+        this.missionsMapper = missionsMapper;
     }
 
     // Show all ninjas
@@ -60,6 +68,10 @@ public class NinjaService {
         }
         return null;
 
+    }
+    public List<MissionsDTO> getAllMissions() {
+        List<MissionsModel> missions = missionsRepository.findAll();
+        return missions.stream().map(missionsMapper::map).collect(Collectors.toList());
     }
 
 
